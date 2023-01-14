@@ -1,11 +1,15 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { Home, Article } from "./pages";
+
 function App() {
   return (
-    <div className="App">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam,
-      placeat quam. Ut rem impedit repellat sequi voluptatum, eveniet maxime
-      excepturi consequuntur blanditiis asperiores deleniti eum cumque? Fuga
-      ullam nostrum neque.
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/article" element={<Article />} />
+      </Routes>
+    </Router>
   );
 }
 

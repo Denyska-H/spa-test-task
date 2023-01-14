@@ -1,5 +1,21 @@
+@import "./components/all";
+
 body {
-	background-color: #e5e5e5;
+	background-color: #ececec;
 	font-family: "Montserrat", sans-serif;
 	font-style: normal;
+}
+
+a {
+	text-decoration: none;
+}
+
+.wrapper {
+	overflow: hidden;
+}
+
+.container {
+	max-width: 1260px;
+	padding: 0 15px;
+	margin: 0 auto;
 }
