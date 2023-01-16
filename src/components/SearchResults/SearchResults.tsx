@@ -1,45 +1,38 @@
 import { Link } from "react-router-dom";
+
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import EastIcon from "@mui/icons-material/East";
 
-import placeholder from "../../assets/img/placeholder.jpg";
+import { SearchResultProps } from "./types";
 
-function SearchResults() {
+function SearchResults({ ...props }: SearchResultProps) {
+  const dateOfPost = props.publishedAt.slice(0, 10);
+  const description = props.summary.slice(0, 100);
+
   return (
-    <section className="results">
-      <div className="container">
-        <div className="results__title">Results: 6</div>
-        <hr className="results__hr" />
-
-        <div className="results__row">
-          <div className="results__column item">
-            <div className="item__block">
-              <div className="item__img">
-                <img src={placeholder} alt="" />
-              </div>
-              <div className="item__bottom">
-                <div className="item__date">
-                  <CalendarTodayIcon />
-                  <span>June 29th, 2021</span>
-                </div>
-                <div className="item__title">
-                  The 2020 World`s Most Valuable Brands
-                </div>
-                <div className="item__info">
-                  Non sed molestie tortor massa vitae in mattis. Eget vel
-                  consequat hendrerit commodo libero aliquam. Urna arcu nunc
-                  tortor vitae pharetra...
-                </div>
-                <Link to="/article" className="item__read-more">
-                  <span>Read more</span>
-                  <EastIcon />
-                </Link>
-              </div>
-            </div>
-          </div>
+    <div className="results__column item">
+      <div className="item__block">
+        <div className="item__img">
+          <Link to={`/article/${props.id}`}>
+            <img src={props.imageUrl} alt="" />
+          </Link>
         </div>
+        <div className="item__bottom">
+          <div className="item__date">
+            <CalendarTodayIcon />
+            <span>{dateOfPost}</span>
+          </div>
+          <Link to={`/article/${props.id}`} className="item__title">
+            {props.title}
+          </Link>
+          <div className="item__info">{`${description}...`}</div>
+        </div>
+        <Link to={`/article/${props.id}`} className="item__read-more">
+          <span>Read more</span>
+          <EastIcon />
+        </Link>
       </div>
-    </section>
+    </div>
   );
 }
 

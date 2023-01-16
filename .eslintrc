@@ -44,11 +44,14 @@
     ],
     "@typescript-esling/ban-ts-comment": "off",
     "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-unused-vars": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "no-shadow": "off",
     "eslint-disable-next-line": "off",
     "import/prefer-default-export": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "no-unused-vars": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }
