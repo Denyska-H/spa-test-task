@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Highlighter from "react-highlight-words";
 
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import EastIcon from "@mui/icons-material/East";
@@ -7,7 +8,7 @@ import { SearchResultProps } from "./types";
 
 function SearchResults({ ...props }: SearchResultProps) {
   const dateOfPost = props.publishedAt.slice(0, 10);
-  const description = props.summary.slice(0, 100);
+  const description = `${props.summary.slice(0, 100)}...`;
 
   return (
     <div className="results__column item">
@@ -23,9 +24,17 @@ function SearchResults({ ...props }: SearchResultProps) {
             <span>{dateOfPost}</span>
           </div>
           <Link to={`/article/${props.id}`} className="item__title">
-            {props.title}
+            <Highlighter
+              searchWords={[props.query]}
+              textToHighlight={props.title}
+            />
           </Link>
-          <div className="item__info">{`${description}...`}</div>
+          <div className="item__info">
+            <Highlighter
+              searchWords={[props.query]}
+              textToHighlight={description}
+            />
+          </div>
         </div>
         <Link to={`/article/${props.id}`} className="item__read-more">
           <span>Read more</span>

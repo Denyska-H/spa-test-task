@@ -1,18 +1,4 @@
 .results {
-	&__title {
-		font-weight: 600;
-		font-size: 18px;
-		margin-top: 40px;
-		color: #363636;
-	}
-
-	&__hr {
-		margin-bottom: 45px;
-		height: 1px;
-		background-color: #c4c4c4;
-		border: none;
-	}
-
 	&__row {
 		display: flex;
 		flex-wrap: wrap;

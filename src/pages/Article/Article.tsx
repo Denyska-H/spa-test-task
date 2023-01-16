@@ -16,10 +16,8 @@ function Article() {
           "https://api.spaceflightnewsapi.net/v3/articles",
         );
         setDetailedInfo(data);
-        return data;
       } catch (error) {
         alert("Something went wrong!");
-        return error;
       }
     }
     fetchDetailedData();

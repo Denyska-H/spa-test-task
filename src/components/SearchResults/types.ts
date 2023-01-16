@@ -4,4 +4,5 @@ export type SearchResultProps = {
   imageUrl: string;
   summary: string;
   publishedAt: string;
+  query: string;
 };
