@@ -21,11 +21,15 @@
 		border: 1px solid #eaeaea;
 		box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
 		border-radius: 5px;
+
+		@media (max-width: 768px) {
+			width: 90%;
+		}
 	}
 
 	&__title {
 		font-weight: 400;
-		font-size: 24px;
+		@include adaptive-font(24, 16);
 		color: #363636;
 		text-align: center;
 		line-height: 130%;
@@ -38,9 +42,13 @@
 	&__text {
 		padding: 30px 75px 30px;
 		font-weight: 400;
-		font-size: 18px;
+		@include adaptive-font(18, 12);
 		line-height: 1.5;
 		color: #000000;
+
+		@media (max-width: 768px) {
+			padding: 30px 40px 30px;
+		}
 	}
 
 	&__back {
@@ -49,10 +57,14 @@
 		align-items: center;
 		gap: 9px;
 		font-weight: 700;
-		font-size: 16px;
+		@include adaptive-font(18, 14);
 		line-height: 150%;
 		color: #363636;
 		padding: 30px 75px 30px;
+
+		@media (max-width: 768px) {
+			padding: 30px 20px 30px;
+		}
 	}
 
 	&__error {
