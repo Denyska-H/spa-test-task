@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import debounce from "lodash.debounce";
 
 import { useAppDispatch } from "../../redux/hooks";
 import { RootState } from "../../redux/store";
@@ -12,8 +13,16 @@ function Home() {
   const { status, posts } = useSelector((state: RootState) => state.posts);
 
   const [query, setQuery] = useState("");
+
+  const updateSearchValue = useCallback(
+    debounce((str: string) => {
+      setQuery(str);
+    }, 150),
+    [],
+  );
+
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value.toLowerCase());
+    updateSearchValue(e.currentTarget.value);
   };
 
   useEffect(() => {
