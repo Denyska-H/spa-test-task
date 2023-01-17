@@ -1,5 +1,4 @@
-export type ArticleProps = {
-  id: number;
+export type TArticle = {
   title: string;
   imageUrl: string;
   summary: string;

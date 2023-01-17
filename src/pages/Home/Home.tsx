@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+
 import { useAppDispatch } from "../../redux/hooks";
 import { RootState } from "../../redux/store";
-import { fetchPostsData } from "../../features/PostInfo/asyncActions";
+import { fetchPosts } from "../../features/PostInfo/asyncActions";
 
 import { SearchBar, SearchResults } from "../../components";
 
 function Home() {
   const dispatch = useAppDispatch();
   const { status, posts } = useSelector((state: RootState) => state.posts);
+
   const [query, setQuery] = useState("");
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value.toLowerCase());
@@ -16,16 +18,14 @@ function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      dispatch(fetchPostsData({ query }));
+      dispatch(fetchPosts({ query }));
     }
     fetchData();
   }, [dispatch, query]);
 
-  const lengthOfResults = posts.length;
-
   return (
     <div className="container">
-      <SearchBar inputHandler={inputHandler} results={lengthOfResults} />
+      <SearchBar inputHandler={inputHandler} />
       <section className="results">
         <div className="results__row">
           {posts.map((post) => (

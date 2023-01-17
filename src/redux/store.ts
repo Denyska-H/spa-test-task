@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import postInfoReducer from "../features/PostInfo/PostInfoSlice";
+import { descriptionReducer } from "../features/Description";
+import { postInfoReducer } from "../features/PostInfo";
 
 const store = configureStore({
   reducer: {
     posts: postInfoReducer,
+    description: descriptionReducer,
   },
 });
 

@@ -1,18 +1,16 @@
-export type TPostInfo = {
-  id: string;
+export type TDescription = {
   title: string;
   imageUrl: string;
   summary: string;
-  publishedAt: string;
 };
 
-export type TPostInfoState = {
-  posts: TPostInfo[];
+export type TDescriptionState = {
+  description: TDescription;
   status: Status;
 };
 
 export type SearchItemsParams = {
-  query: string;
+  id: string;
 };
 
 export enum Status {

@@ -1,37 +1,32 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import { useSelector } from "react-redux";
 
-import { ArticleProps } from "../../components/ArticleInfo/types";
+import { useAppDispatch } from "../../redux/hooks";
+import { RootState } from "../../redux/store";
+import { fetchDescription } from "../../features/Description/asyncActions";
+
 import { ArticleInfo } from "../../components";
 
 function Article() {
+  const dispatch = useAppDispatch();
   const { infoID } = useParams<{ infoID?: string }>();
-  const [detailedInfo, setDetailedInfo] = useState<Array<ArticleProps>>([]);
+
+  const { status, description } = useSelector(
+    (state: RootState) => state.description,
+  );
 
   useEffect(() => {
     async function fetchDetailedData() {
-      try {
-        const { data } = await axios.get(
-          "https://api.spaceflightnewsapi.net/v3/articles",
-        );
-        setDetailedInfo(data);
-      } catch (error) {
-        alert("Something went wrong!");
-      }
+      const descID = infoID || "";
+      dispatch(fetchDescription({ id: descID }));
     }
     fetchDetailedData();
-  }, []);
-
-  const filteredInfoID = detailedInfo.filter(
-    (elem) => elem.id === Number(infoID),
-  );
+  }, [dispatch, infoID]);
 
   return (
     <section className="article">
-      {filteredInfoID.map((info) => (
-        <ArticleInfo key={info.id} {...info} />
-      ))}
+      <ArticleInfo {...description} />
     </section>
   );
 }

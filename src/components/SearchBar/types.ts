@@ -1,4 +1,3 @@
-export type SearchBarProps = {
+export type TSearchBar = {
   inputHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  results: number;
 };

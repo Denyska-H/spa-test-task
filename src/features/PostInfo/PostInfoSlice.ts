@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 import { Status, TPostInfo, TPostInfoState } from "./types";
-import { fetchPostsData } from "./asyncActions";
+import { fetchPosts } from "./asyncActions";
 
 const initialState: TPostInfoState = {
   posts: [],
@@ -18,17 +18,17 @@ export const PostInfoSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchPostsData.pending, (state) => {
+    builder.addCase(fetchPosts.pending, (state) => {
       state.status = Status.PENDING;
       state.posts = [];
     });
 
-    builder.addCase(fetchPostsData.fulfilled, (state, action) => {
+    builder.addCase(fetchPosts.fulfilled, (state, action) => {
       state.status = Status.FULFILLED;
       state.posts = action.payload;
     });
 
-    builder.addCase(fetchPostsData.rejected, (state) => {
+    builder.addCase(fetchPosts.rejected, (state) => {
       state.status = Status.REJECTED;
       state.posts = [];
     });

@@ -1,4 +1,4 @@
-export type SearchResultProps = {
+export type TSearchResult = {
   id: string;
   title: string;
   imageUrl: string;

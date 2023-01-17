@@ -4,9 +4,9 @@ import Highlighter from "react-highlight-words";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import EastIcon from "@mui/icons-material/East";
 
-import { SearchResultProps } from "./types";
+import { TSearchResult } from "./types";
 
-function SearchResults({ ...props }: SearchResultProps) {
+function SearchResults({ ...props }: TSearchResult) {
   const dateOfPost = props.publishedAt.slice(0, 10);
   const description = `${props.summary.slice(0, 100)}...`;
 
@@ -15,7 +15,7 @@ function SearchResults({ ...props }: SearchResultProps) {
       <div className="item__block">
         <div className="item__img">
           <Link to={`/article/${props.id}`}>
-            <img src={props.imageUrl} alt="" />
+            <img src={props.imageUrl} alt="Something went wrong..." />
           </Link>
         </div>
         <div className="item__bottom">
