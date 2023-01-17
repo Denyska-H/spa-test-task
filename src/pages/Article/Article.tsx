@@ -6,7 +6,7 @@ import { useAppDispatch } from "../../redux/hooks";
 import { RootState } from "../../redux/store";
 import { fetchDescription } from "../../features/Description/asyncActions";
 
-import { ArticleInfo } from "../../components";
+import { ArticleInfo, Loader } from "../../components";
 
 function Article() {
   const dispatch = useAppDispatch();
@@ -26,7 +26,16 @@ function Article() {
 
   return (
     <section className="article">
-      <ArticleInfo {...description} />
+      {status === "rejected" ? (
+        <div className="article__error">
+          Oops! <br />
+          😔 Something went wrong 😔
+        </div>
+      ) : (
+        <div>
+          {status === "pending" ? <Loader /> : <ArticleInfo {...description} />}
+        </div>
+      )}
     </section>
   );
 }

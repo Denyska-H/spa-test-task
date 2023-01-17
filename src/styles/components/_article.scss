@@ -54,4 +54,13 @@
 		color: #363636;
 		padding: 30px 75px 30px;
 	}
+
+	&__error {
+		max-width: 800px;
+		margin: 0 auto;
+		text-align: center;
+		font-weight: 600;
+		font-size: 50px;
+		margin-top: 150px;
+	}
 }
